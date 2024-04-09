@@ -7,7 +7,7 @@ const routes = require('./routes/routes')
 const app = express();
 app.use(cors({
     credentials:true,
-    origin:['http://localhost:4200']
+    origin:['https://mean-auth1.vercel.app']
 }))
 app.use(cookieParser())
 app.use(express.json())
