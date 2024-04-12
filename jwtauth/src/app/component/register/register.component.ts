@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       Swal.fire('Error', 'Please enter a valid email', 'error');
     } else {
       this.http
-        .post('http://localhost:5000/api/register', user, {
+        .post('https://mean-auth-server.vercel.app/api/register', user, {
           withCredentials: true,
         })
         .subscribe(

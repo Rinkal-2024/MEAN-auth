@@ -20,7 +20,7 @@ export class NavComponent implements OnInit{
 
 
   logout(){
-    this.http.post('http://localhost:5000/api/logout' ,{} ,{withCredentials:true})
+    this.http.post('https://mean-auth-server.vercel.app/api/logout' ,{} ,{withCredentials:true})
     .subscribe(()=>{
       this.authenticated = false
     })
