@@ -69,15 +69,13 @@ router.get("/user", async (req, res) => {
   try {
     const cookie = req.cookies["jwt"];
     const claims = jwt.verify(cookie, "secret");
-    if (!claims) {
-      return res.status(401).send({
-        message: "unauthenticated  ",
-      });
-    }
+    // If jwt.verify succeeds, execution continues here
     const user = await User.findOne({ _id: claims._id });
-    const { password, ...data } = await user.toJSON(); 
+    const { password, ...data } = await user.toJSON();
     res.send(data);
   } catch (err) {
+    // Handle JWT verification errors here
+    console.error("JWT verification failed:", err);
     return res.status(401).send({
       message: "unauthenticated user  ",
     });
