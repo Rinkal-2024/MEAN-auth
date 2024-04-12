@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('http://localhost:5000/api/user', {
+      .get('https://mean-auth-jwtauth.vercel.app/api/user', {
         withCredentials: true,
       })
       .subscribe((res:any) => {
