@@ -75,11 +75,11 @@ router.get("/user", async (req, res) => {
       });
     }
     const user = await User.findOne({ _id: claims._id });
-    const { password, ...data } = await user.toJSON();
+    const { password, ...data } = await user.toJSON(); 
     res.send(data);
   } catch (err) {
     return res.status(401).send({
-      message: "unauthenticated  ",
+      message: "unauthenticated user  ",
     });
   }
 });
