@@ -35,7 +35,7 @@ router.post("/register", async (req, res) => {
 
     res.cookie("jwt", token, {
       httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 10*24 * 60 * 60 * 1000,
     });
     res.send({
       message: "success",
@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ _id: user._id }, "secret key");
   res.cookie("jwt", token, {
     httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000, //for 1 day
+    maxAge: 10*24 * 60 * 60 * 1000, //for 10 day
   });
   res.send({
     message: "success",
@@ -86,7 +86,7 @@ router.get("/user", async (req, res) => {
 
 
 router.post("/logout", (req, res) => {
-  res.cookie("jwt", "", { maxAge: 0 });
+  res.cookie("jwt", "", { maxAge: 10 });
   res.send({
     message: "success",
   });
