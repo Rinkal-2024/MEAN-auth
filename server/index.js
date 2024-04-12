@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use('/api', routes);
 
-app.get('/home', (req,res)=>{
+app.get('/', (req,res)=>{
     res.send('hello')
 })
 
