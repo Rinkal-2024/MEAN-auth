@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
      } else if (!this.ValidateEmail(user.email)) {
       Swal.fire('Error', 'Please enter a valid email', 'error');
     } else {
-      this.http.post('http://localhost:5000/api/login',user,{
+      this.http.post('https://mean-auth-jwtauth.vercel.app/api/login',user,{
         withCredentials:true
       })
       .subscribe(

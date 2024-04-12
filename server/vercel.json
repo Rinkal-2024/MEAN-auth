@@ -8,17 +8,8 @@
     ],
     "routes": [
         {
-<<<<<<< HEAD
             "src": "/(.*)",
             "dest": "/"
-=======
-            "src": "/api/(.*)",
-            "dest": "/index.js"
-        },
-        {
-            "src": "/",
-            "dest": "/index.js"
->>>>>>> 0c9c794ca24c557d1efb30003f5b2ce9453c8b5f
         }
     ]
 }
