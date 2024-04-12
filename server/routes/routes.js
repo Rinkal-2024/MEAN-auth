@@ -35,7 +35,7 @@ router.post("/register", async (req, res) => {
 
     res.cookie("jwt", token, {
       httpOnly: true,
-      maxAge: 10*24 * 60 * 60 * 1000,
+      maxAge: 10 *24 * 60 * 60 * 1000,
     });
     res.send({
       message: "success",
@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ _id: user._id }, "secret key");
   res.cookie("jwt", token, {
     httpOnly: true,
-    maxAge: 10*24 * 60 * 60 * 1000, //for 10 day
+    maxAge: 10 * 24 * 60 * 60 * 1000, //for 10 day
   });
   res.send({
     message: "success",
@@ -65,46 +65,28 @@ router.post("/login", async (req, res) => {
 });
 
 
-// router.get("/user", async (req, res) => {
-//   try {
-//     const cookie = req.cookies["jwt"];
-//     const claims = jwt.verify(cookie, "secret");
-//     if (!claims) {
-//       return res.status(401).send({
-//         message: "unauthenticated  ",
-//       });
-//     }
-//     const user = await User.findOne({ _id: claims._id });
-//     const { password, ...data } = await user.toJSON();
-//     res.send(data);
-//   } catch (err) {
-//     return res.status(401).send({
-//       message: "unauthenticated  ",
-//     });
-//   }
-// });
-
 router.get("/user", async (req, res) => {
   try {
     const cookie = req.cookies["jwt"];
     const claims = jwt.verify(cookie, "secret");
-    // If jwt.verify succeeds, execution continues here
+    if (!claims) {
+      return res.status(401).send({
+        message: "unauthenticated  ",
+      });
+    }
     const user = await User.findOne({ _id: claims._id });
     const { password, ...data } = await user.toJSON();
     res.send(data);
   } catch (err) {
-    // Handle JWT verification errors here
-    console.error("JWT verification failed:", err);
     return res.status(401).send({
-      message: "unauthenticated user  ",
+      message: "unauthenticated  ",
     });
   }
 });
 
 
-
 router.post("/logout", (req, res) => {
-  res.cookie("jwt", "", { maxAge: 10 });
+  res.cookie("jwt", "", { maxAge: 0 });
   res.send({
     message: "success",
   });
