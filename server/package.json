@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "rinkal",
   "license": "ISC",
@@ -16,5 +17,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.1"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.26"
   }
 }

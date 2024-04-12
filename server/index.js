@@ -13,12 +13,18 @@ app.use(cookieParser())
 app.use(express.json())
 app.use('/api', routes)
 
+app.get('/', (req,res)=>{
+    res.send('hello');
+})
+
 mongoose.connect("mongodb://localhost:27017/jwt",{
    // userNewUrlParser:true,
 })
 .then(()=>{
     console.log("connected to database");
-    app.listen(5000 ,()=>{
-        console.log("App is listening on port 5000");
-    })
+    const port =5000;
+    app.listen(port, () => {
+        console.log("your website is served on http://localhost:3000");
+    });
+         
 })
