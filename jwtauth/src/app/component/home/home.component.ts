@@ -12,19 +12,24 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http
-      .get('https://mean-auth-server.vercel.app/api/user', {
-        withCredentials: true,
-      })
-      .subscribe((res:any) => {
-        this.message = `Hi,${res.name}` ;
-        Emitters.authEmitter.emit(true)
-      },
-      (err)=>{
-        this.message = "You are not logged in "
-        Emitters.authEmitter.emit(false)
-
-      }
-      );
   }
+  user(){
+  this.http
+  .get('https://mean-auth-server.vercel.app/api/user', {
+    withCredentials: true,
+  })
+  .subscribe((res:any) => {
+    this.message = `Hi,${res.name}` ;
+    Emitters.authEmitter.emit(true)
+  },
+  (err)=>{
+    this.message = "You are not logged in "
+    Emitters.authEmitter.emit(false)
+
+  }
+  ); 
+
+  }
+  
+
 }
