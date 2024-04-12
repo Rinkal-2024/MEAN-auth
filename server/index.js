@@ -22,9 +22,16 @@ mongoose.connect("mongodb://localhost:27017/jwt",{
 })
 .then(()=>{
     console.log("connected to database");
+<<<<<<< HEAD
     const port =5000;
     app.listen(port, () => {
         console.log("your website is served on http://localhost:3000");
     });
          
 })
+=======
+    app.listen(5000 ,()=>{
+        console.log("App is listening on port 5000");
+    })
+})
+>>>>>>> 0c9c794ca24c557d1efb30003f5b2ce9453c8b5f
