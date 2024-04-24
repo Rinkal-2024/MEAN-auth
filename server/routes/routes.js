@@ -69,9 +69,9 @@ router.get("/user", async (req, res) => {
   try {
     const cookie = req.cookies["jwt"];
     const claims = jwt.verify(cookie, "secret");
-    if (!claims) {
-      return res.status(401).send({
-        message: "unauthenticated  ",
+    if (claims) {
+      return res.status(200).send({
+        message: "authenticated  ",
       });
     }
     const user = await User.findOne({ _id: claims._id });
